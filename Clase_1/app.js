@@ -10,6 +10,21 @@ app.get('/', (req, res) => {
         `);
 });
 
+app.get('/user/:id', (req, res) => {
+    const userId = req.params.id;
+    res.send(`Mostrando información del usuario con ID: ${userId}`);
+});
+
+app.get('/search', (req, res) => {
+   const terms = req.query.terms || 'NO ESPECIFICADO';
+   const category = req.query.category || 'Todas las categorías';
+    res.send(`
+         <h2>Resultados de búsqueda</h2>
+            <p>Términos: ${terms}</p>
+            <p>Categoría: ${category}</p>
+        `);
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 }); 
